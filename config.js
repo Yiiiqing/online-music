@@ -4,7 +4,7 @@ module.exports = {
     viewDir: path.resolve('./views'),
     staticDir: path.resolve('./public'),
     uploadDir: path.resolve('./public/files'),
-    appPort: 8888,
+    appPort: process.env.PORT||8888, //heroku 自行使用port
     dbConfig:{
         connectionLimit: 10,
         host: 'localhost',

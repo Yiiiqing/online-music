@@ -15,7 +15,7 @@ let app = new Koa();
 let {appPort,viewDir,staticDir, uploadDir} = require('./config')
 //开启服务器
 app.listen(appPort,()=>{
-    console.log('listening on port: ',appPort)
+    console.log('listening on port: ',appPort,' host',)
 })
 
 //模板渲染
