@@ -2,7 +2,7 @@ var mysql = require('mysql');
 const {dbConfig,dbConfigStr} = require('../config')
 // console.log(process.env.NODE_ENV)
 var pool = mysql.createPool(process.env.NODE_ENV === 'production'?dbConfigStr:dbConfig)
-
+console.log("连接数据库为:",pool.config.connectionConfig.host)
 var db = {};
 
 db.q = function (sql, params) {
