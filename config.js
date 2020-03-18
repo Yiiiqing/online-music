@@ -11,5 +11,6 @@ module.exports = {
         user: 'root',
         password: 'zzz',
         database: 'music'
-    }
+    },
+    dbConfigStr: 'mysql://kcxez9gf7a0sa58g:pyee0lklxw6jj7s5@qbhol6k6vexd5qjs.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/qnubkui1v1zloexg'
 }

@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const Koa = require('koa');
 const path = require('path');//核心对象
 

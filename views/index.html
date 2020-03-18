@@ -42,8 +42,8 @@
           <th>歌手</th>
           <th>编辑</th>
           <th>删除</th>
-          <th>播放</th>
           <th>播放次数</th>
+          <th>播放</th>
         </thead>
         <tbody class="list_container" id="list_container">
           {{each musics}}
@@ -53,6 +53,7 @@
             <td>{{$value.time}}</td>
             <td><a href="/music/edit?id={{$value.id}}">编辑</a></td>
             <td><a class="del" href="/music/del-music?id={{$value.id}}">删除</a></td>
+            <td>{{$value.times}}</td>
             <td>
               <span
                 style="cursor:pointer"

@@ -1,6 +1,7 @@
 var mysql = require('mysql');
-const {dbConfig} = require('../config')
-var pool = mysql.createPool(dbConfig)
+const {dbConfig,dbConfigStr} = require('../config')
+// console.log(process.env.NODE_ENV)
+var pool = mysql.createPool(process.env.NODE_ENV === 'production'?dbConfigStr:dbConfig)
 
 var db = {};
 
