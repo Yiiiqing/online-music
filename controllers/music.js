@@ -11,19 +11,24 @@ function optUpload(ctx) {
   let { title, singer, time } = ctx.request.body;
   // //2. 获取文件 -> 保存文件的网络路径(方便/public请求返回)
   // // 保存文件的绝对路径也可以,但是麻烦
-  //更新的时候
+
   let fileStr
   let filelrcStr
-  if(ctx.request.body.file ){
-    fileStr = ctx.request.body.file[0];
-    filelrcStr = ctx.request.body.filelrc[0]
-  }
+  // if(ctx.request.body.file ){
+  //   fileStr = ctx.request.body.file[0];
+  //   filelrcStr = ctx.request.body.filelrc[0]
+  // }
   let { file, filelrc } = ctx.request.files;
   let saveSongObj = {
     title,
     singer,
     time
   };
+  //更新的时候
+  if(ctx.url === '/music/update-music'){
+    saveSongObj.uid = 1;
+    return saveSongObj
+  }
   //2.5 歌词可选
   if(!filelrcStr){
     //为了小程序也能用这个接口
@@ -43,8 +48,6 @@ function optUpload(ctx) {
   if(fileStr){
     saveSongObj.file = fileStr
   }else{
-    console.log('2',file)
-
     saveSongObj.file = "/public/files/" + path.parse(file.path).base; //文件名加后缀
   }
   // 2.8 加入用户id, 未来使用session
@@ -78,7 +81,6 @@ module.exports = {
     let saveSongObj = optUpload(ctx);
     let { id } = ctx.request.body; //uid
     Object.assign(saveSongObj, { id });
-
     // update
     let result = await musicModel.updateMusic(saveSongObj);
     console.log(result);
